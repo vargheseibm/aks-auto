@@ -13,7 +13,7 @@ permissions:
 jobs:
   terraform:
     name: 'Terraform'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  
     environment: dev
 
     # Export variables from Github to use in the Terraform file
@@ -60,7 +60,7 @@ jobs:
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
-      run: terraform init 
+      run: terraform init -backend-config=backend.tf
 
     - name: Terraform Validate
       run: terraform validate
