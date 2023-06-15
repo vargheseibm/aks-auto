@@ -1,4 +1,11 @@
 terraform {
+    required_version = ">= 1.3"
+    backend "azurerm" {
+    resource_group_name  = "RG-ADA---CAKE-Team"
+    storage_account_name = "terstorage123"
+    container_name       = "terstatefile"
+    key                  = "terraform.tfstate"
+  }
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"

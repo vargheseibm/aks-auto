@@ -41,11 +41,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    # Install version 16 of Node Js (Required by setup-terraform: https://github.com/hashicorp/setup-terraform/issues/84)
-    - name: Install Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '16'
+    # # Install version 16 of Node Js (Required by setup-terraform: https://github.com/hashicorp/setup-terraform/issues/84)
+    # - name: Install Node.js
+    #   uses: actions/setup-node@v2
+    #   with:
+    #     node-version: '16'
 
     # Install the latest version of Terraform CLI
     - name: Setup Terraform
