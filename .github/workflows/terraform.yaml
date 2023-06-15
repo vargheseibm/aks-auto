@@ -13,7 +13,7 @@ permissions:
 jobs:
   terraform:
     name: 'Terraform'
-    runs-on: [self-hosted, linux, elastic, default]
+    runs-on: ubuntu-latest
     environment: dev
 
     # Export variables from Github to use in the Terraform file
