@@ -17,18 +17,24 @@ jobs:
     environment: dev
 
     # Export variables from Github to use in the Terraform file
-    # env:
+    env:
     #   CURRENT_ENV: ${{ vars.CURRENT_ENV }}
     #   # Terraform CLI config
     #   TF_IN_AUTOMATION: "true"
     #   TF_INPUT: "false"
     #   # Terraform AzureRM backend config
-    #   ARM_ACCESS_KEY: ${{ secrets.AZURE_STORAGE_ACCOUNT_ACCESS_KEY }}
-    #   ARM_CLIENT_ID: ${{ fromJSON(secrets.CAKE_AZ_SP_DEV).clientId }}
-    #   ARM_CLIENT_SECRET: ${{ fromJSON(secrets.CAKE_AZ_SP_DEV).clientSecret }}
-    #   ARM_TENANT_ID: ${{ fromJSON(secrets.CAKE_AZ_SP_DEV).tenantId }}
-    #   ARM_SUBSCRIPTION_ID: ${{ fromJSON(secrets.CAKE_AZ_SP_DEV).subscriptionId }}
-    #   TF_VAR_enable_test_api: ${{ vars.ENABLE_TEST_API }}
+      # ARM_ACCESS_KEY: ${{ secrets.AZURE_STORAGE_ACCOUNT_ACCESS_KEY }}
+      # ARM_CLIENT_ID: ${{ fromJSON(secrets.CAKE_AZ_SP_DEV).clientId }}
+      # ARM_CLIENT_SECRET: ${{ fromJSON(secrets.CAKE_AZ_SP_DEV).clientSecret }}
+      # ARM_TENANT_ID: ${{ fromJSON(secrets.CAKE_AZ_SP_DEV).tenantId }}
+      # ARM_SUBSCRIPTION_ID: ${{ fromJSON(secrets.CAKE_AZ_SP_DEV).subscriptionId }}
+      # TF_VAR_enable_test_api: ${{ vars.ENABLE_TEST_API }}
+      
+      ARM_CLIENT_ID: "a63f65ad-1ea9-4dee-b564-651209d4c5bc"
+      ARM_CLIENT_SECRET: "1f18Q~9yaExFdagNeURPNXpEX_KK-yYLVe1zWc9q"
+      ARM_TENANT_ID: "1f2519d6-a33d-4336-abb5-8085bcb587d6"
+      ARM_SUBSCRIPTION_ID: "48ee300d-8738-496a-9366-1271ebefc1e6"
+  
 
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
