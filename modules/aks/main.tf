@@ -67,16 +67,11 @@ resource "azurerm_kubernetes_cluster" "k8s" {
 
 
 
-data "azurerm_kubernetes_cluster" "k8s" {
-    name = var.cluster_name
 
-
-}
 
 
 
 output "name" {
-    value = data.azurerm_kubernetes_cluster.k8s.host
-  
+    value = azurerm_kubernetes_cluster.k8s.api_server_authorized_ip_ranges
 }
 
