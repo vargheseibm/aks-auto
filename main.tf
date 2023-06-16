@@ -6,7 +6,10 @@ module "aks" {
 }
 
 
-
+module "app-deploy" {
+  depends_on = [ module.aks ]
+  source = "./modules/app"
+}
 
 
 # Datasource to get Latest Azure AKS latest Version
@@ -19,3 +22,4 @@ module "aks" {
 #     value = data.azurerm_kubernetes_service_versions.current
   
 # }
+

@@ -20,7 +20,7 @@ provider "azurerm" {
   features {}
 
   # client_id       = "a63f65ad-1ea9-4dee-b564-651209d4c5bc"
-  # client_secret   = var.client_secret
+  # client_secret   = "Qnd8Q~lSFMRgcE642yRRTuxp00S6Hd1Z5Z5jobkA"
   # tenant_id       = "1f2519d6-a33d-4336-abb5-8085bcb587d6"
   # subscription_id = "48ee300d-8738-496a-9366-1271ebefc1e6"
 }
@@ -28,11 +28,12 @@ provider "azurerm" {
 
 provider "helm" {
   kubernetes {
+
     host     = module.aks.host
 
-    client_certificate     = file(module.aks.client_certificate)
-    client_key             = file(module.aks.client_key)
-    cluster_ca_certificate = file(module.aks.cluster_ca_certificate)
+    client_certificate     = module.aks.client_certificate
+    client_key             = module.aks.client_key
+    cluster_ca_certificate = module.aks.cluster_ca_certificate
   }
 }
 

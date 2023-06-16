@@ -42,6 +42,29 @@ resource "azurerm_kubernetes_cluster" "k8s" {
 }
 
 
+output "client_certificate" {
+
+ value  = azurerm_kubernetes_cluster.k8s.kube_config[0].client_certificate
+ sensitive = true
+
+  
+}
+
+output "client_key" {
+value = azurerm_kubernetes_cluster.k8s.kube_config[0].client_key
+  
+}
+
+output "host" {
+value = azurerm_kubernetes_cluster.k8s.kube_config[0].host
+  
+}
+
+output "cluster_ca_certificate" {
+value = azurerm_kubernetes_cluster.k8s.kube_config[0].cluster_ca_certificate
+  
+}
+
 # resource "kubernetes_namespace_v1" "namespace" {
 #   metadata {
 #     name = "demo-application"
@@ -71,7 +94,4 @@ resource "azurerm_kubernetes_cluster" "k8s" {
 
 
 
-output "name" {
-    value = azurerm_kubernetes_cluster.k8s.api_server_authorized_ip_ranges
-}
 
