@@ -9,7 +9,7 @@ variable "location" {
 variable "resource_group_name" {
   type = string
   description = "This variable defines the Resource Group"
-  default = "RG-ADA---CAKE-Team"
+  default = ""
 }
 
 # Azure AKS Environment Name
