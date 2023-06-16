@@ -7,5 +7,5 @@ module "aks" {
 
 
 output "host" {
-    value = module.aks.azurerm_kubernetes_cluster.k8s.host
+    value = module.aks.host
 }
