@@ -24,3 +24,16 @@ provider "azurerm" {
   # tenant_id       = "1f2519d6-a33d-4336-abb5-8085bcb587d6"
   # subscription_id = "48ee300d-8738-496a-9366-1271ebefc1e6"
 }
+
+
+provider "helm" {
+  kubernetes {
+    host     = module.aks.host
+
+    client_certificate     = file(module.aks.client_certificate)
+    client_key             = file(module.aks.client_key)
+    cluster_ca_certificate = file(module.aks.cluster_ca_certificate)
+  }
+}
+
+
