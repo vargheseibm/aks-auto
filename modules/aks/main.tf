@@ -67,11 +67,16 @@ resource "azurerm_kubernetes_cluster" "k8s" {
 
 
 
- 
+data "azurerm_kubernetes_cluster" "k8s" {
+    name = var.cluster_name
+
+
+}
+
 
 
 output "name" {
-    value = data.azurerm_kubernetes_cluster.k8s.name
+    value = data.azurerm_kubernetes_cluster.k8s.host
   
 }
 
