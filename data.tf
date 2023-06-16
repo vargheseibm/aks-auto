@@ -3,7 +3,4 @@ data "azurerm_resource_group" "aks_rg" {
  
 }
 
-output "name" {
-    value = data.azurerm_resource_group.aks_rg.name
-  
-}
+

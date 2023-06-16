@@ -14,26 +14,16 @@ jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest  
-    environment: dev
+    
 
     # Export variables from Github to use in the Terraform file
     env:
-    #   CURRENT_ENV: ${{ vars.CURRENT_ENV }}
-    #   # Terraform CLI config
-    #   TF_IN_AUTOMATION: "true"
-    #   TF_INPUT: "false"
-    #   # Terraform AzureRM backend config
-      # ARM_ACCESS_KEY: ${{ secrets.AZURE_STORAGE_ACCOUNT_ACCESS_KEY }}
-      # ARM_CLIENT_ID: ${{ fromJSON(secrets.CAKE_AZ_SP_DEV).clientId }}
-      # ARM_CLIENT_SECRET: ${{ fromJSON(secrets.CAKE_AZ_SP_DEV).clientSecret }}
-      # ARM_TENANT_ID: ${{ fromJSON(secrets.CAKE_AZ_SP_DEV).tenantId }}
-      # ARM_SUBSCRIPTION_ID: ${{ fromJSON(secrets.CAKE_AZ_SP_DEV).subscriptionId }}
-      # TF_VAR_enable_test_api: ${{ vars.ENABLE_TEST_API }}
+  
       
-      ARM_CLIENT_ID: "a63f65ad-1ea9-4dee-b564-651209d4c5bc"
-      ARM_CLIENT_SECRET: "1f18Q~9yaExFdagNeURPNXpEX_KK-yYLVe1zWc9q"
-      ARM_TENANT_ID: "1f2519d6-a33d-4336-abb5-8085bcb587d6"
-      ARM_SUBSCRIPTION_ID: "48ee300d-8738-496a-9366-1271ebefc1e6"
+      ARM_CLIENT_ID: ${{secretes.AZURE_CLIENT_ID}} 
+      ARM_CLIENT_SECRET: ${{secretes.AZURE_CLIENT_SECRET}} 
+      ARM_TENANT_ID: ${{secretes.AZURE_TENANT_ID}}
+      ARM_SUBSCRIPTION_ID: ${{secretes.AZURE_SUB_ID}} 
   
 
 
@@ -47,22 +37,12 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    # # Install version 16 of Node Js (Required by setup-terraform: https://github.com/hashicorp/setup-terraform/issues/84)
-    # - name: Install Node.js
-    #   uses: actions/setup-node@v2
-    #   with:
-    #     node-version: '16'
-
+   
     # Install the latest version of Terraform CLI
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
       with:
         terraform_version: ~1.4.6
-
-    # Checks that all Terraform configuration files adhere to a canonical format
-    - name: Terraform Format
-      run: terraform fmt -check
-      continue-on-error: true
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
@@ -75,12 +55,6 @@ jobs:
     - name: Terraform Plan
       run: terraform plan  -out=tfplan
 
-    # TODO: require manual review before applying, at least for prod
-    # https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment#required-reviewers
-    # set up a dummy environment that requires team approval, and run a no-op job targeting it
-
-    # On push to "main", build or change infrastructure according to Terraform configuration files
-    # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     - name: Terraform Apply
       if: github.ref_name == 'main' && github.event_name == 'push'
       run: terraform apply -auto-approve tfplan
