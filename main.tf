@@ -7,5 +7,6 @@ module "aks" {
 
 
 output "host" {
+    sensitive = true
     value = module.aks.host
 }
