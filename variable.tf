@@ -6,11 +6,7 @@ variable "location" {
 }
 
 # Azure Resource Group Name
-variable "resource_group_name" {
-  type = string
-  description = "This variable defines the Resource Group"
-  default = ""
-}
+
 
 # Azure AKS Environment Name
 variable "environment" {
