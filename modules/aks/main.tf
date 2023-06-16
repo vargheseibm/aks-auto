@@ -67,6 +67,6 @@ resource "azurerm_kubernetes_cluster" "k8s" {
 
 
 output "host" {
-    value = azurerm_kubernetes_cluster.k8s.host
+    value = azurerm_kubernetes_cluster.k8s.kube_config
 }
 
