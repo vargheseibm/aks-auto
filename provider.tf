@@ -68,10 +68,5 @@ data "external" "grafana_oauth_token" {
   ]
 
 
-
-}
-
-output "token_value" {
-  value = data.external.grafana_oauth_token.result.access_token
-  
+data "azurerm_client_config" "current" {
 }
