@@ -31,6 +31,11 @@ resource "azurerm_dashboard_grafana" "azurerm_dashboard_grafana" {
 
 }
 
+output grafana_endpoint {
+
+    value = azurerm_dashboard_grafana.azurerm_dashboard_grafana.endpoint
+}
+
 data "azurerm_client_config" "current" {
 }
 
@@ -61,3 +66,6 @@ resource "grafana_data_source" "azure_monitor" {
     subscriptionId = data.azurerm_client_config.current.subscription_id
   })
 }
+
+
+
