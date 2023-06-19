@@ -14,10 +14,10 @@ terraform {
 
     }
 
-     grafana = {
-      source  = "grafana/grafana"
-      version = "~>1.40.1"
-    }
+    #  grafana = {
+    #   source  = "grafana/grafana"
+    #   version = "~>1.40.1"
+    # }
 
     external = {
       source  = "hashicorp/external"
@@ -76,10 +76,10 @@ data "azurerm_client_config" "current" {
 }
 
 
-# provider "grafana" {
-#   # connect to managed grafana instance created by azurerm
-#   #url = azurerm_dashboard_grafana.azurerm_dashboard_grafana.endpoint
-#   url = module.grafana.grafana_endpoint
-#   # using Azure SP OAuth access token as Bearer token, not a native Grafana API key
-#   auth = data.external.grafana_oauth_token.result.access_token
-# }
+provider "grafana" {
+  # connect to managed grafana instance created by azurerm
+  #url = azurerm_dashboard_grafana.azurerm_dashboard_grafana.endpoint
+  url = module.grafana.grafana_endpoint
+  # using Azure SP OAuth access token as Bearer token, not a native Grafana API key
+  auth = data.external.grafana_oauth_token.result.access_token
+}
