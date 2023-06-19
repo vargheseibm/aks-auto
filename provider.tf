@@ -14,14 +14,24 @@ terraform {
 
     }
 
-    #  grafana = {
-    #   source  = "grafana/grafana"
-    #   version = "~>1.40.1"
-    # }
+     grafana = {
+      source  = "grafana/grafana"
+      version = "~>1.40.1"
+    }
 
     external = {
       source  = "hashicorp/external"
       version = "~>2.3.1"
+    }
+    
+    helm = {
+      source  = "hashicorp/helm"
+      version = "~>2.9.0"
+    }
+
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = "~>2.20.0"
     }
 
   }
