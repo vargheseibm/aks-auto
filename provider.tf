@@ -52,6 +52,17 @@ provider "helm" {
   }
 }
 
+provider "grafana" {
+  # connect to managed grafana instance created by azurerm
+  #url = azurerm_dashboard_grafana.azurerm_dashboard_grafana.endpoint
+  url = module.grafana.grafana_endpoint
+  # using Azure SP OAuth access token as Bearer token, not a native Grafana API key
+  auth = data.external.grafana_oauth_token.result.access_token
+}
+
+
+provider "external" {
+}
 
 data "external" "grafana_oauth_token" {
     program = [
@@ -72,10 +83,3 @@ data "azurerm_client_config" "current" {
 }
 
 
-provider "grafana" {
-  # connect to managed grafana instance created by azurerm
-  #url = azurerm_dashboard_grafana.azurerm_dashboard_grafana.endpoint
-  url = module.grafana.grafana_endpoint
-  # using Azure SP OAuth access token as Bearer token, not a native Grafana API key
-  auth = data.external.grafana_oauth_token.result.access_token
-}
