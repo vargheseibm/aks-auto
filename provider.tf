@@ -87,6 +87,7 @@ data "azurerm_client_config" "current" {
 
 
 provider "grafana" {
+  alias = "cloud"
   # connect to managed grafana instance created by azurerm
   #url = azurerm_dashboard_grafana.azurerm_dashboard_grafana.endpoint
   url = module.grafana0.grafana_endpoint
