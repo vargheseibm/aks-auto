@@ -13,7 +13,7 @@ variable "location" {
 
 
 variable "id" {
-  type = number
+  type = string
   description = "Azure Region where all these resources will be provisioned"
 
 
