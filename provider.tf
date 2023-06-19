@@ -66,7 +66,7 @@ data "external" "grafana_oauth_token" {
         "https://login.microsoftonline.com/$ARM_TENANT_ID/oauth2/token"
     EOF
   ]
-
+}
 
 data "azurerm_client_config" "current" {
 }
