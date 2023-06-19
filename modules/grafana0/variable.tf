@@ -15,6 +15,6 @@ variable "location" {
 variable "id" {
   type = number
   description = "Azure Region where all these resources will be provisioned"
-  default = ""
+
 
 }
