@@ -12,8 +12,8 @@ module "app-deploy" {
 }
 
 
-module "grafana" {
-  source = "./modules/grafana"
+module "grafana0" {
+  source = "./modules/grafana0"
 
   resource_group_name = data.azurerm_resource_group.aks_rg.name
   location = data.azurerm_resource_group.aks_rg.location
