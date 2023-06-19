@@ -14,8 +14,7 @@ required_providers {
 }
 
 
-provider "external" {
-}
+
 
 data "external" "grafana_oauth_token" {
     program = [
