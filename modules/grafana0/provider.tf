@@ -31,8 +31,6 @@ data "external" "grafana_oauth_token" {
   ]
 }
 
-data "azurerm_client_config" "current" {
-}
 
 
 provider "grafana" {
