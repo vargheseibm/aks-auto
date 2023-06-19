@@ -1,11 +1,23 @@
-resource "grafana_folder" "ElasticSearch" {
-   provider = grafana.cloud
+resource "azapi_resource" "azgrafana" {
+  type        = "Microsoft.Dashboard/grafana@2022-08-01" 
+  name        = "mgf-example"
+  parent_id   = var.id
+  location    = var.location
 
-   title = "ElasticSearch"
-}
+  identity {
+    type      = "SystemAssigned"
+  }
 
-resource "grafana_folder" "InfluxDB" {
-   provider = grafana.cloud
+  body = jsonencode({
+    sku = {
+      name = "Standard"
+    }
+    properties = {
+      publicNetworkAccess = "Enabled",
+      zoneRedundancy = "Enabled",
+      apiKey = "Enabled",
+      deterministicOutboundIP = "Enabled"
+    }
+  })
 
-   title = "InfluxDB"
 }
